@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/cold_part_flow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/fire_part_flow.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/fire_part.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/cold_part.tscn" type="PackedScene" id=4]
+
+[node name="hand_particles" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0513062, 0 )
+
+[node name="fire_flow" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -0.141528, -0.132782, 0.00227255 )
+visible = false
+
+[node name="fire_part" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, -0.141528, -0.132782, -0.0305347 )
+
+[node name="cold_part" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0.129042, -0.132782, -0.0305347 )
+
+[node name="cold_flow" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.666667, 0, 0, 0, 0.666667, 0, 0, 0, 0.666667, 0.129042, -0.132782, 0.00227255 )
+visible = false

@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=2]
+
+[sub_resource type="Curve" id=1]
+min_value = -20.0
+max_value = 20.0
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.0177515, 0.485207 )
+colors = PoolColorArray( 1, 0.995789, 0.730469, 1, 1, 0.768219, 0.152344, 1, 1, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0.994141 ), 0.0, -1.97389, 0, 0, Vector2( 1, 0.0166016 ), 0.370325, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 0.02
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 4.0
+initial_velocity_random = 0.5
+angular_velocity_random = 1.0
+damping = 1.0
+angle = 45.0
+angle_curve = SubResource( 2 )
+scale = 3.0
+scale_random = 0.5
+scale_curve = SubResource( 6 )
+color_ramp = SubResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=8]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_line_width = 0.1
+params_point_size = 0.1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=9]
+material = SubResource( 8 )
+size = Vector2( 0.01, 0.01 )
+
+[node name="fire_flow" type="Spatial"]
+
+[node name="Particles3" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00791738, 0.0744861, -0.0139789 )
+cast_shadow = 0
+amount = 64
+lifetime = 0.02
+speed_scale = 0.25
+randomness = 1.0
+local_coords = false
+process_material = SubResource( 7 )
+draw_pass_1 = SubResource( 9 )
